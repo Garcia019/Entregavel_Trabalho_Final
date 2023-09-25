@@ -1,7 +1,14 @@
-// Clase
+// Classe
 
 class ToDo {
-
+  Texto
+  Prioridade
+  Feito
+  constructor(texto, prioridade){
+    this.Texto = texto
+    this.Prioridade = prioridade
+    this.Feito = false
+  }
 }
 
 // Array
@@ -9,31 +16,95 @@ class ToDo {
 
 //funções projeto
 
-function CriarToDo() {
-
+function CriarToDo(texto, prioridade, arrayAfazeres) {
+  let toDo = new ToDo(texto, prioridade)
+  let toDoExiste = false
+  for(let afazeres of arrayAfazeres){
+    if(afazeres.Texto === texto && afazeres.Prioridade === prioridade){
+      toDoExiste = true
+    }
+  if(!toDoExiste){
+    array.push(toDo)
+    return(toDo)
+  }else{
+    alert("Afazer já adicionado a lista de afazeres!")
+    return(toDo)
+  }
+  }
 }
 
-function AtualizarToDo() {
-
+function AtualizarToDo(textoAntigo, textoNovo, arrayAfazeres) {
+  let toDoExiste = false
+  for(let afazer of arrayAfazeres){
+    if(afazer.Texto === textoAntigo){
+      toDoExiste = true
+      afazer.Texto = textoNovo
+    }
+  }
+  if(toDoExiste){
+    return true
+  }else{
+    return false
+  }
 }
 
-function ConcluirToDo() {
-
+function ConcluirToDo(arrayAfazeres, texto) {
+  let toDoExiste = false
+  for(let afazer of arrayAfazeres){
+    if(afazer.Texto === texto){
+      toDoExiste = true
+      if (afazer.Feito){
+        afazer.Feito = false
+      }else{
+        afazer.Feito = true
+      }
+    }
+  }
+  if(toDoExiste){
+    return true
+  }else{
+    return false
+  }
 }
 
-function ExcluirToDo() {
-
+function ExcluirToDo(arrayAfazeres, texto) {
+  let toDoExiste = false
+  let posicao
+  arrayAfazeres.forEach((afazer, index) => {
+    if(afazer.Texto === texto){
+      toDoExiste = true
+      posicao = index
+    }
+  });
+  if(toDoExiste){
+    arrayAfazeres.splice(posicao,1)
+    return true
+  }else{
+    return false
+  }
 }
 
-function PesquisarToDo() {
- 
+function PesquisarToDo(arrayAfazeres, texto) {
+  let toDoExiste = false
+  for(let afazer of arrayAfazeres){
+    if(afazer.Texto === texto){
+      toDoExiste = true
+    }
+  }
+  if(toDoExiste){
+    return true
+  }else{
+    return false
+  }
 }
 
-function OrdenarCrescente() {
-  
+function OrdenarCrescente(arrayAfazeres){
+  arrayAfazeres.sort((a, b) => a.Prioridade - b.Prioridade);
+  return arrayAfazeres
 }
 function OrdenarDecrescente() {
-  
+  arrayAfazeres.sort((a, b) => b.Prioridade - a.Prioridade);
+  return arrayAfazeres
 }
 
 // Seleção de elementos
