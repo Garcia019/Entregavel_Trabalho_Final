@@ -6,13 +6,13 @@ class ToDo {
   Feito
   constructor(texto, prioridade){
     this.Texto = texto
-    this.Prioridade = prioridade
+    this.Prioridade = Number(prioridade)
     this.Feito = false
   }
 }
 
 // Array
-
+let arrayTodos = []
 
 //funções projeto
 
@@ -23,13 +23,12 @@ function CriarToDo(texto, prioridade, arrayAfazeres) {
     if(afazeres.Texto === texto && afazeres.Prioridade === prioridade){
       toDoExiste = true
     }
-  if(!toDoExiste){
-    array.push(toDo)
-    return(toDo)
-  }else{
-    alert("Afazer já adicionado a lista de afazeres!")
-    return(toDo)
   }
+  if(!toDoExiste){
+    arrayAfazeres.push(toDo)
+    return toDo
+  }else{
+    return toDo
   }
 }
 
@@ -102,7 +101,7 @@ function OrdenarCrescente(arrayAfazeres){
   arrayAfazeres.sort((a, b) => a.Prioridade - b.Prioridade);
   return arrayAfazeres
 }
-function OrdenarDecrescente() {
+function OrdenarDecrescente(arrayAfazeres) {
   arrayAfazeres.sort((a, b) => b.Prioridade - a.Prioridade);
   return arrayAfazeres
 }
