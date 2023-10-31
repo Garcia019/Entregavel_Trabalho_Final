@@ -166,7 +166,6 @@ const saveTodo = (text, rating, done = 0, save = 1) => {
   todoInput.value = "";
   todoInput2.value = "";
 
-
 };
 
 const toggleForms = () => {
